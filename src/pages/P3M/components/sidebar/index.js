@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Data } from './data';
 import { useLocation } from 'react-router-dom';
-import '../../../js/js/scripts';
-import '../../../js/js/stisla';
+import '../../../../js/js/scripts';
+import '../../../../js/js/stisla';
 import './index.css';
 // import SidebarGlobal from "../../../js/SidebarGlobal";
+
 export class SideBar extends Component {
 	componentDidMount() {}
 	render() {
@@ -16,7 +17,7 @@ export class SideBar extends Component {
 					<div className='sidebar-brand'>
 						<Link
 							className='sidebar-title d-flex flex-nowrap justify-content-center'
-							to='/dashboard'
+							to='/admin/dashboard'
 						>
 							<div className='sidebar-title-si'>SI</div>
 							<div className='sidebar-title-pengmas'>PENGMAS</div>
@@ -38,10 +39,13 @@ export class SideBar extends Component {
 								if (menu.active) {
 									comp = (
 										<li key={iMenu} className='nav-item dropdown active'>
-											<a href='/dashboard' className='nav-link has-dropdown'>
+											<Link
+												to='/admin/dashboard'
+												className='nav-link has-dropdown'
+											>
 												<i className={menu.icon} />
 												<span> {menu.name} </span>
-											</a>
+											</Link>
 											<ul className='dropdown-menu'>
 												{menu.children.map((submenu, iSubmenu) => {
 													let subComp;
@@ -121,11 +125,14 @@ export class SideBar extends Component {
 									);
 								} else {
 									comp = (
-										<li key={iMenu} className='nav-item dropdown'>
-											<a href='#' className='nav-link has-dropdown'>
+										<li key={iMenu} className='nav-item dropdown active'>
+											<Link
+												to='/admin/dataprodi'
+												className='nav-link has-dropdown'
+											>
 												<i className={menu.icon} />
 												<span> {menu.name} </span>
-											</a>
+											</Link>
 											<ul className='dropdown-menu'>
 												{menu.children.map((submenu, iSubmenu) => {
 													let subComp;

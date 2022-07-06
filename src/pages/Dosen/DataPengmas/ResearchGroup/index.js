@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { MDBDataTableV5 } from 'mdbreact';
 import axios from 'axios';
 
-export default function PengmasProdi() {
+export default function ResearchGroup() {
 	const [showDataPengmas, setShowDataPengmas] = React.useState([]);
 
 	const getDataPengmas = (e) => {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmasbyProdi',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmasbyRG',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -47,7 +47,7 @@ export default function PengmasProdi() {
 				},
 			},
 			{
-				label: 'Program Studi',
+				label: 'Research Center',
 				field: 'pusatriset',
 				width: 270,
 			},
@@ -71,9 +71,14 @@ export default function PengmasProdi() {
 				pusatriset: item.NAMA,
 				tahun: item.TAHUN_PELAKSANAAN,
 				aksi: (
-					<Link to={`/data/detaildatapengmas/${item.ID_PENGMAS}`} class='btn btn-info'>
-						<i class='fas fa-eye'></i>
-					</Link>
+					<div>
+						<Link
+							to={`/data/detaildatapengmas/${item.ID_PENGMAS}`}
+							class='btn btn-info'
+						>
+							<i class='fas fa-eye'></i>
+						</Link>
+					</div>
 				),
 			})),
 		],
@@ -83,12 +88,12 @@ export default function PengmasProdi() {
 		<div class='main-content'>
 			<section class='section'>
 				<div class='section-header'>
-					<h1>Daftar Pengmas Program Studi</h1>
+					<h1>Data Pengmas Berdasarkan Research Group</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='/data/prodi'>Data Pengmas</Link>
+							<Link to='/data/researchgroup'>Data Pengmas</Link>
 						</div>
-						<div class='breadcrumb-item'>Program Studi</div>
+						<div class='breadcrumb-item'>Research Group</div>
 					</div>
 				</div>
 

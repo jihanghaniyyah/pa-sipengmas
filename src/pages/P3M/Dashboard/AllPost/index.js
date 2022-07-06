@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { MDBDataTableV5 } from 'mdbreact';
 import axios from 'axios';
 
-export default function PengmasProdi() {
+export default function AllPost() {
 	const [showDataPengmas, setShowDataPengmas] = React.useState([]);
 
 	const getDataPengmas = (e) => {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmasbyProdi',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmas',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -47,14 +47,14 @@ export default function PengmasProdi() {
 				},
 			},
 			{
-				label: 'Program Studi',
-				field: 'pusatriset',
+				label: 'Kategori',
+				field: 'kategori',
 				width: 270,
 			},
 			{
-				label: 'Nama Pegawai',
-				field: 'namapegawai',
-				width: 200,
+				label: 'Pusat Riset',
+				field: 'pusatriset',
+				width: 270,
 			},
 			{
 				label: 'Aksi',
@@ -65,51 +65,38 @@ export default function PengmasProdi() {
 		rows: [
 			...showDataPengmas.map((item, i) => ({
 				nomor: i + 1,
+				tahun: item.TAHUN_PELAKSANAAN,
 				judul: item.JUDUL,
 				kategori: item.KATEGORI,
-				namapegawai: item.NAMA_PEGAWAI,
 				pusatriset: item.NAMA,
-				tahun: item.TAHUN_PELAKSANAAN,
 				aksi: (
-					<Link to={`/data/detaildatapengmas/${item.ID_PENGMAS}`} class='btn btn-info'>
+					<Link to={`/admin/detaildatapengmas/${item.ID_PENGMAS}`} class='btn btn-info'>
 						<i class='fas fa-eye'></i>
 					</Link>
 				),
 			})),
 		],
 	};
-
 	return (
-		<div class='main-content'>
-			<section class='section'>
-				<div class='section-header'>
-					<h1>Daftar Pengmas Program Studi</h1>
-					<div class='section-header-breadcrumb'>
-						<div class='breadcrumb-item active'>
-							<Link to='/data/prodi'>Data Pengmas</Link>
-						</div>
-						<div class='breadcrumb-item'>Program Studi</div>
-					</div>
-				</div>
-
+		<div class='card'>
+			<div class='card-body'>
+				<h5 class='mb-2'>Data Kegiatan Pengabdian Masyarakat</h5>
 				<div class='section-body'>
-					<div class='card px-5'>
-						<div class='card-body'>
-							<MDBDataTableV5
-								hover
-								entriesOptions={[10, 20, 25, 50]}
-								entries={10}
-								pagesAmount={4}
-								data={datatable}
-								pagingTop
-								searchTop
-								searchBottom={false}
-								barReverse
-							/>
-						</div>
+					<div class='card-body'>
+						<MDBDataTableV5
+							hover
+							entriesOptions={[10, 20, 25, 50]}
+							entries={10}
+							pagesAmount={4}
+							data={datatable}
+							pagingTop
+							searchTop
+							searchBottom={false}
+							barReverse
+						/>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 	);
 }

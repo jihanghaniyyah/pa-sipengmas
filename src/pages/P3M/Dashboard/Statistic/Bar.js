@@ -102,8 +102,9 @@ export default function StatisticBar() {
 	};
 
 	if (loading) {
-		return <div>Bar Graph Loading...</div>;
+		return <div>Hai</div>;
 	}
+
 	return (
 		<div id='chart'>
 			<ReactApexChart options={options} series={series} type='bar' height={350} />

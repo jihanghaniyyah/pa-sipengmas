@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Header, SideBar } from '../../components';
 import { MDBDataTableV5 } from 'mdbreact';
+import { Header, SideBar } from '../../components';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default function PenawaranJudulAdmin() {
-	const [showDataJudul, setShowDataJudul] = React.useState([]);
+export default function ResearchCenterAdmin() {
+	const [showDataPengmas, setShowDataPengmas] = React.useState([]);
 
-	const getDataJudul = (e) => {
+	const getDataPengmas = (e) => {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudul',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmasbyRC',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
-			setShowDataJudul(result.data.data);
+			setShowDataPengmas(result.data.data);
 
 			console.log(result.data.data);
 		});
 	};
 
-	const deleteDataJudul = (id) => {
+	const deleteDataPengmas = (id) => {
 		Swal.fire({
 			title: 'Are you sure?',
 			icon: 'question',
@@ -36,8 +36,8 @@ export default function PenawaranJudulAdmin() {
 				axios({
 					method: 'post',
 					url:
-						'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=deleteJudul',
-					data: { ID_PENAWARAN: id },
+						'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=deleteDataPengmas',
+					data: { ID_PENGMAS: id },
 					headers: {
 						'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 					},
@@ -50,15 +50,19 @@ export default function PenawaranJudulAdmin() {
 	};
 
 	React.useEffect(() => {
-		getDataJudul();
+		getDataPengmas();
 	}, []);
 
-	// const datatable = {};
 	const datatable = {
 		columns: [
 			{
 				label: 'No',
 				field: 'nomor',
+				width: 100,
+			},
+			{
+				label: 'Tahun Pelaksanaan',
+				field: 'tahun',
 				width: 100,
 			},
 			{
@@ -71,19 +75,14 @@ export default function PenawaranJudulAdmin() {
 				},
 			},
 			{
-				label: 'Kategori',
-				field: 'kategori',
+				label: 'Research Center',
+				field: 'pusatriset',
 				width: 270,
 			},
 			{
-				label: 'Ketentuan',
-				field: 'ketentuan',
+				label: 'Nama Pegawai',
+				field: 'namapegawai',
 				width: 200,
-			},
-			{
-				label: 'Status',
-				field: 'status',
-				width: 100,
 			},
 			{
 				label: 'Aksi',
@@ -92,33 +91,24 @@ export default function PenawaranJudulAdmin() {
 			},
 		],
 		rows: [
-			...showDataJudul.map((item, i) => ({
+			...showDataPengmas.map((item, i) => ({
 				nomor: i + 1,
-				judul: item.JUDUL_PENAWARAN,
+				judul: item.JUDUL,
+				idpengmas: item.ID_PENGMAS,
 				kategori: item.KATEGORI,
-				ketentuan: item.KETENTUAN,
-				status: (
-					<span
-						class={`badge ${
-							item.STATUS === 'Not Available' ? 'badge-danger' : 'badge-success'
-						}`}
-					>
-						{item.STATUS}
-					</span>
-				),
+				namapegawai: item.NAMA_PEGAWAI,
+				pusatriset: item.NAMA,
+				tahun: item.TAHUN_PELAKSANAAN,
 				aksi: (
 					<div>
 						<Link
-							to={`/admin/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							to={`/admin/detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
 						</Link>
-						{/* <Link to='/admin/detaildatapenawaranjudul' class='btn btn-warning'>
-							Edit
-						</Link> */}
 						<button
-							onClick={() => deleteDataJudul(item.ID_PENAWARAN)}
+							onClick={() => deleteDataPengmas(item.ID_PENGMAS)}
 							class='btn btn-danger'
 						>
 							<i class='fas fa-trash'></i>
@@ -128,8 +118,6 @@ export default function PenawaranJudulAdmin() {
 			})),
 		],
 	};
-	// console.log(item);
-
 	return (
 		<div className='app'>
 			<Header />
@@ -137,12 +125,12 @@ export default function PenawaranJudulAdmin() {
 			<div class='main-content'>
 				<section class='section'>
 					<div class='section-header'>
-						<h1>Penawaran Judul Pengabdian Masyarakat</h1>
+						<h1>Data Pengmas Berdasarkan Research Center</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link href='/admin/penawaranjudul'>Data Pengmas</Link>
+								<Link to='/admin/researchcenter'>Data Pengmas</Link>
 							</div>
-							<div class='breadcrumb-item'>Penawaran Judul</div>
+							<div class='breadcrumb-item'>Research Center</div>
 						</div>
 					</div>
 
@@ -150,7 +138,7 @@ export default function PenawaranJudulAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/admin/tambahdata/penawaranjudul'
+									to='/admin/tambahdataresearchcenter'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

@@ -1,7 +1,97 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MDBDataTableV5 } from 'mdbreact';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function PenawaranJudul() {
+	const [showDataJudul, setShowDataJudul] = React.useState([]);
+
+	const getDataJudul = (e) => {
+		axios({
+			method: 'post',
+			url:
+				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudul',
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+			},
+		}).then((result) => {
+			setShowDataJudul(result.data.data);
+
+			console.log(result.data.data);
+		});
+	};
+
+	React.useEffect(() => {
+		getDataJudul();
+	}, []);
+
+	const datatable = {
+		columns: [
+			{
+				label: 'No',
+				field: 'nomor',
+				width: 100,
+			},
+			{
+				label: 'Judul',
+				field: 'judul',
+				width: 150,
+				attributes: {
+					'aria-controls': 'DataTable',
+					'aria-label': 'Name',
+				},
+			},
+			{
+				label: 'Kategori',
+				field: 'kategori',
+				width: 270,
+			},
+			{
+				label: 'Ketentuan',
+				field: 'ketentuan',
+				width: 200,
+			},
+			{
+				label: 'Status',
+				field: 'status',
+				width: 100,
+			},
+			{
+				label: 'Aksi',
+				field: 'aksi',
+				width: 150,
+			},
+		],
+		rows: [
+			...showDataJudul.map((item, i) => ({
+				nomor: i + 1,
+				judul: item.JUDUL_PENAWARAN,
+				kategori: item.KATEGORI,
+				ketentuan: item.KETENTUAN,
+				status: (
+					<span
+						class={`badge ${
+							item.STATUS === 'Not Available' ? 'badge-danger' : 'badge-success'
+						}`}
+					>
+						{item.STATUS}
+					</span>
+				),
+				aksi: (
+					<div>
+						<Link
+							to={`/penawaranjudul/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							class='btn btn-info'
+						>
+							<i class='fas fa-eye'></i>
+						</Link>
+					</div>
+				),
+			})),
+		],
+	};
+
 	return (
 		<div class='main-content'>
 			<section class='section'>
@@ -11,86 +101,24 @@ export default function PenawaranJudul() {
 						<div class='breadcrumb-item active'>
 							<Link to='/data/penawaranjudul'>Data Pengmas</Link>
 						</div>
-						<div class='breadcrumb-item'>
-							<Link to='/data/penawaranjudul'>Penawaran Judul</Link>
-						</div>
+						<div class='breadcrumb-item'>Penawaran Judul</div>
 					</div>
 				</div>
 
 				<div class='section-body'>
-					<div class='card'>
+					<div class='card px-5'>
 						<div class='card-body'>
-							<div class='row'>
-								<div class='table-responsive'>
-									<table class='table table-striped' id='table-1'>
-										<thead>
-											<tr>
-												<th>No</th>
-												<th>Judul</th>
-												<th>Kategori</th>
-												<th>Ketentuan</th>
-												<th>Status</th>
-												<th>Aksi</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Pengabdian Masyarakat IT 2021</td>
-												<td>Program Studi</td>
-												<td>Dosen Program Studi Teknik Informatika</td>
-												<td>
-													<div class='badge badge-success'>Available</div>
-												</td>
-												<td>
-													<Link
-														to='/penawaranjudul/detaildatapenawaranjudul'
-														class='btn btn-primary'
-													>
-														Detail
-													</Link>
-												</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Pengabdian Masyarakat IT 2021</td>
-												<td>PT Dalam Negeri</td>
-												<td>Dosen Program Studi Teknik Informatika</td>
-												<td>
-													<div class='badge badge-danger'>
-														Not Available
-													</div>
-												</td>
-												<td>
-													<Link
-														to='/penawaranjudul/detaildatapenawaranjudul'
-														class='btn btn-primary'
-													>
-														Detail
-													</Link>
-												</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Pengabdian Masyarakat IT 2021</td>
-												<td>PT Luar Negeri</td>
-												<td>Dosen Program Studi Teknik Informatika</td>
-												<td>
-													<div class='badge badge-success'>Available</div>
-												</td>
-												<td>
-													<Link
-														to='/penawaranjudul/detaildatapenawaranjudul'
-														class='btn btn-primary'
-													>
-														Detail
-													</Link>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+							<MDBDataTableV5
+								hover
+								entriesOptions={[10, 20, 25, 50]}
+								entries={10}
+								pagesAmount={4}
+								data={datatable}
+								pagingTop
+								searchTop
+								searchBottom={false}
+								barReverse
+							/>
 						</div>
 					</div>
 				</div>

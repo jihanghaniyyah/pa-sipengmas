@@ -12,8 +12,8 @@ export const Data = {
 			children: [
 				{
 					name: 'Statistik Data',
-					url: '/dashboard',
-					// active: true
+					url: '/admin/dashboard',
+					// active: true,
 				},
 			],
 		},
@@ -28,15 +28,18 @@ export const Data = {
 			children: [
 				{
 					name: 'Program Studi',
-					url: '/data/prodi',
+					url: '/admin/dataprodi',
+					active: true,
 				},
 				{
 					name: 'Research Center',
-					url: '/data/researchcenter',
+					url: '/admin/researchcenter',
+					active: true,
 				},
 				{
 					name: 'Research Group',
-					url: '/data/researchgroup',
+					url: '/admin/researchgroup',
+					active: true,
 				},
 			],
 		},
@@ -47,7 +50,8 @@ export const Data = {
 			children: [
 				{
 					name: 'Daftar Penawaran',
-					url: '/data/penawaranjudul',
+					url: '/admin/penawaranjudul',
+					active: true,
 				},
 			],
 		},

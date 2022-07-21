@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Header, SideBar } from '../../components';
 import axios from 'axios';
@@ -6,12 +7,24 @@ import axios from 'axios';
 // import Stack from '@mui/material/Stack';
 import Swal from 'sweetalert2';
 
-export default function TambahPenawaranJudulAdmin() {
+export default function EditPenawaranJudulAdmin() {
+	let nomor = window.location.pathname.split('/');
+	// console.log(nomor[3]);
+
 	const [showKategori, setShowKategori] = React.useState([]);
 	const [showStatusJudul, setShowStatusJudul] = React.useState([]);
 	const [valueKategori, setValueKategori] = React.useState();
 	const [valueStatus, setValueStatus] = React.useState();
+	const [showDetailPenawaran, setShowDetailPenawaran] = useState({});
+	const [loading, setLoading] = useState(true);
 	const history = useHistory();
+
+	const [idpenawaran, setidpenawaran] = React.useState();
+	const [judulpenawaran, setjudulpenawaran] = React.useState();
+	const [kategori, setkategori] = React.useState();
+	const [ketentuan, setketentuan] = React.useState();
+	const [status, setstatus] = React.useState();
+	const [narahubung, setnarahubung] = React.useState();
 
 	const [formInput, setFormInput] = React.useState({
 		judulpenawaran: '',
@@ -30,21 +43,9 @@ export default function TambahPenawaranJudulAdmin() {
 		setValueKategori(e.target.value);
 	};
 
-	// const onChangeKategori = (e) => {
-	// 	console.log(e.target.value);
-	// 	setShowKategori(e.target.value);
-	// };
-
-	// const onChangeKategori = (e) => {
-	// 	setShowKategori(e.target.value);
-	// };
-
 	const onChangeStatus = (e) => {
 		setValueStatus(e.target.value);
-		console.log(e.target.value);
 	};
-
-	// console.log(showKategori);
 
 	const getKategori = () => {
 		axios({
@@ -80,22 +81,48 @@ export default function TambahPenawaranJudulAdmin() {
 		getStatusJudul();
 	}, []);
 
-	console.log(formInput);
-
-	const submitForm = (e) => {
-		e.preventDefault();
-
-		const saveData = {
-			JUDUL_PENAWARAN: formInput.judulpenawaran,
-			ID_KATEGORI: valueKategori,
-			KETENTUAN: formInput.ketentuan,
-			ID_STATUS: valueStatus,
-			NARAHUBUNG: formInput.narahubung,
-		};
+	const getDetailbyID = (id) => {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=insertJudul',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=showJudulbyID',
+			data: { ID_detailPenawaran: nomor[3] },
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+			},
+		}).then((result) => {
+			setShowDetailPenawaran(result.data.data);
+			setidpenawaran(result.data.data.ID_PENAWARAN);
+			setjudulpenawaran(result.data.data.JUDUL_PENAWARAN);
+			setkategori(result.data.data.ID_KATEGORI);
+			setketentuan(result.data.data.KETENTUAN);
+			setnarahubung(result.data.data.NARAHUBUNG);
+			setstatus(result.data.data.ID_STATUS);
+			setLoading(false);
+			console.log(result.data.data);
+		});
+	};
+
+	React.useEffect(() => {
+		getDetailbyID();
+	}, []);
+
+	const updateData = (e) => {
+		e.preventDefault();
+
+		const saveData = {
+			ID_PENAWARAN: idpenawaran,
+			JUDUL_PENAWARAN: judulpenawaran,
+			ID_KATEGORI: kategori,
+			KETENTUAN: ketentuan,
+			ID_STATUS: status,
+			NARAHUBUNG: narahubung,
+		};
+		console.log(saveData);
+		axios({
+			method: 'post',
+			url:
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=editJudul',
 			data: saveData,
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -104,7 +131,7 @@ export default function TambahPenawaranJudulAdmin() {
 			.then((result) => {
 				Swal.fire({
 					icon: 'success',
-					text: 'Data berhasil ditambahkan!',
+					text: 'Data berhasil diperbarui!',
 					confirmButtonText: 'OK',
 				}).then((result) => {
 					if (result.isConfirmed) {
@@ -123,7 +150,7 @@ export default function TambahPenawaranJudulAdmin() {
 			<div class='main-content'>
 				<section class='section'>
 					<div class='section-header'>
-						<h1>Tambah Data Penawaran Judul</h1>
+						<h1>Edit Data Penawaran Judul</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
 								<Link to='/admin/penawaranjudul'>Data Pengmas</Link>
@@ -131,14 +158,14 @@ export default function TambahPenawaranJudulAdmin() {
 							<div class='breadcrumb-item'>
 								<Link to='/admin/penawaranjudul'>Penawaran Judul</Link>
 							</div>
-							<div class='breadcrumb-item'>Tambah Data</div>
+							<div class='breadcrumb-item'>Edit Data</div>
 						</div>
 					</div>
 
 					<div class='section-body'>
 						<div class='card'>
 							<div class='card-body'>
-								<form onSubmit={submitForm}>
+								<form onSubmit={updateData}>
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
 											Judul Kegiatan
@@ -148,7 +175,11 @@ export default function TambahPenawaranJudulAdmin() {
 												type='text'
 												class='form-control'
 												name='judulpenawaran'
-												onChange={onChangeInput}
+												onChange={(e) => {
+													setjudulpenawaran(e.target.value);
+													console.log(judulpenawaran);
+												}}
+												defaultValue={judulpenawaran}
 											/>
 										</div>
 									</div>
@@ -159,7 +190,8 @@ export default function TambahPenawaranJudulAdmin() {
 										<div class='col-sm-12 col-md-7'>
 											<select
 												class='form-control selectric'
-												onChange={onChangeKategori}
+												onChange={(e) => setkategori(e.target.value)}
+												value={kategori}
 											>
 												<option value=''>Pilih Kategori</option>
 												{showKategori.map((item) => {
@@ -171,9 +203,6 @@ export default function TambahPenawaranJudulAdmin() {
 												})}
 											</select>
 										</div>
-										{/* <Stack sx={{ width: 300 }} size='small'>
-											<AutoComplete id='kategori'/>
-										</Stack> */}
 									</div>
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
@@ -182,7 +211,8 @@ export default function TambahPenawaranJudulAdmin() {
 										<div class='col-sm-12 col-md-7'>
 											<select
 												class='form-control selectric'
-												onChange={onChangeStatus}
+												onChange={(e) => setstatus(e.target.value)}
+												value={status}
 											>
 												<option value=''>Pilih Status</option>
 												{showStatusJudul.map((item) => {
@@ -200,7 +230,11 @@ export default function TambahPenawaranJudulAdmin() {
 											Ketentuan
 										</label>
 										<div class='col-sm-12 col-md-7'>
-											<textarea name='ketentuan' onChange={onChangeInput} />
+											<textarea
+												name='ketentuan'
+												onChange={(e) => setketentuan(e.target.value)}
+												defaultValue={ketentuan}
+											/>
 										</div>
 									</div>
 									<div class='form-group row mb-4'>
@@ -212,15 +246,19 @@ export default function TambahPenawaranJudulAdmin() {
 												type='text'
 												class='form-control'
 												name='narahubung'
-												onChange={onChangeInput}
+												onChange={(e) => {
+													setnarahubung(e.target.value);
+													console.log(narahubung);
+												}}
+												defaultValue={narahubung}
 											/>
 										</div>
 									</div>
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'></label>
 										<div class='col-sm-12 col-md-7'>
-											<button class='btn btn-success' onClick={submitForm}>
-												Publish
+											<button class='btn btn-success' type='submit'>
+												Update
 											</button>
 										</div>
 									</div>

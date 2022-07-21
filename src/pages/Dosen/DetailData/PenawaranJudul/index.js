@@ -14,12 +14,13 @@ export default function DetailDataPenawaranJudul() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudulbyID',
-			data: { ID_detailPenawaran: nomor[3] },
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=showJudulbyID',
+			data: { ID_detailPenawaran: nomor[4] },
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
+			console.log(result);
 			setShowDetailPenawaran(result.data.data);
 			setLoading(false);
 		});
@@ -85,9 +86,13 @@ export default function DetailDataPenawaranJudul() {
 							<div class='row'>
 								<div class='col-4 col-md-2'></div>
 								<div class='col-8 col-md-10 buttons'>
-									<Link to='/data/penawaranjudul' class='btn btn-info'>
+									<Link
+										to='/mis116/dashboard/penawaranjudul'
+										class='btn btn-info'
+									>
 										Kembali
 									</Link>
+									{/* <button class='btn btn-warning'>Ambil Penawaran</button> */}
 								</div>
 							</div>
 						</div>

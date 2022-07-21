@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MDBDataTableV5 } from 'mdbreact';
-import { Header, SideBar } from '../../components';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default function ResearchCenterAdmin() {
+export default function Mandiri() {
 	const [showDataPengmas, setShowDataPengmas] = React.useState([]);
 
 	const getDataPengmas = (e) => {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyRC',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyMandiri',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -75,14 +74,14 @@ export default function ResearchCenterAdmin() {
 				},
 			},
 			{
-				label: 'Research Center',
-				field: 'pusatriset',
-				width: 270,
-			},
-			{
 				label: 'Nama Pegawai',
 				field: 'namapegawai',
 				width: 200,
+			},
+			{
+				label: 'Peran',
+				field: 'peran',
+				width: 270,
 			},
 			{
 				label: 'Aksi',
@@ -94,15 +93,13 @@ export default function ResearchCenterAdmin() {
 			...showDataPengmas.map((item, i) => ({
 				nomor: i + 1,
 				judul: item.JUDUL,
-				idpengmas: item.ID_PENGMAS,
-				kategori: item.KATEGORI,
 				namapegawai: item.NAMA_PEGAWAI,
-				pusatriset: item.NAMA,
+				peran: item.PERAN,
 				tahun: item.TAHUN_PELAKSANAAN,
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/dashboard/detaildatamandiri/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -118,47 +115,44 @@ export default function ResearchCenterAdmin() {
 			})),
 		],
 	};
-	return (
-		<div className='app'>
-			<Header />
-			<SideBar />
-			<div class='main-content'>
-				<section class='section'>
-					<div class='section-header'>
-						<h1>Data Pengmas Berdasarkan Research Center</h1>
-						<div class='section-header-breadcrumb'>
-							<div class='breadcrumb-item active'>
-								<Link to='/admin/researchcenter'>Data Pengmas</Link>
-							</div>
-							<div class='breadcrumb-item'>Research Center</div>
-						</div>
-					</div>
 
-					<div class='section-body'>
-						<div class='card px-5'>
-							<div class='card-body'>
-								<Link
-									to='/mis116/admin/tambahdataresearchcenter'
-									class='btn btn-warning mb-3'
-								>
-									Tambah Data
-								</Link>
-								<MDBDataTableV5
-									hover
-									entriesOptions={[10, 20, 25, 50]}
-									entries={10}
-									pagesAmount={4}
-									data={datatable}
-									pagingTop
-									searchTop
-									searchBottom={false}
-									barReverse
-								/>
-							</div>
+	return (
+		<div class='main-content'>
+			<section class='section'>
+				<div class='section-header'>
+					<h1>Daftar Pengmas Mandiri</h1>
+					<div class='section-header-breadcrumb'>
+						<div class='breadcrumb-item active'>
+							<Link to='mis116/admin/dataprodi'>Data Pengmas</Link>
+						</div>
+						<div class='breadcrumb-item'>Mandiri</div>
+					</div>
+				</div>
+
+				<div class='section-body'>
+					<div class='card px-5'>
+						<div class='card-body'>
+							<Link
+								to='/mis116/dashboard/tambahdatamandiri'
+								class='btn btn-warning mb-3'
+							>
+								Tambah Data
+							</Link>
+							<MDBDataTableV5
+								hover
+								entriesOptions={[10, 20, 25, 50]}
+								entries={10}
+								pagesAmount={4}
+								data={datatable}
+								pagingTop
+								searchTop
+								searchBottom={false}
+								barReverse
+							/>
 						</div>
 					</div>
-				</section>
-			</div>
+				</div>
+			</section>
 		</div>
 	);
 }

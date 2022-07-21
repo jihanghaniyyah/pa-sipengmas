@@ -38,7 +38,7 @@ export default function TambahPengmasResearchCenter() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/pegawai.php?function=showPegawai',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/pegawai.php?function=showPegawai',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -59,7 +59,7 @@ export default function TambahPengmasResearchCenter() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/kategori.php?function=showKategori',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/kategori.php?function=showKategori',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -80,7 +80,7 @@ export default function TambahPengmasResearchCenter() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/pusatriset.php?function=showPusatRiset',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/pusatriset.php?function=showPusatRiset',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -111,7 +111,7 @@ export default function TambahPengmasResearchCenter() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=insertDataPengmas',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=insertDataPengmas',
 			data: saveData,
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -125,7 +125,7 @@ export default function TambahPengmasResearchCenter() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/admin/researchcenter');
+						history.push('/mis116/admin/researchcenter');
 					}
 				});
 			})
@@ -299,7 +299,7 @@ export default function TambahPengmasResearchCenter() {
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'></label>
 										<div class='col-sm-12 col-md-7'>
-											<button class='btn btn-primary' onClick={submitForm}>
+											<button class='btn btn-success' onClick={submitForm}>
 												Publish
 											</button>
 										</div>

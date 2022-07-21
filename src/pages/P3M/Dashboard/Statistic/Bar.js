@@ -6,11 +6,12 @@ export default function StatisticBar() {
 	const [showJumlahDatabyProdi, setShowJumlahDatabyProdi] = useState([]);
 	const [showJumlahDatabyResearchCenter, setShowJumlahDatabyResearchCenter] = useState([]);
 	const [showJumlahDatabyResearchGroup, setShowJumlahDatabyResearchGroup] = useState([]);
+	const [showJumlahDatabyMandiri, setShowJumlahDatabyMandiri] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const getJumlahDatabyProdi = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/barstatistik.php?function=showJumlahProdi'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahProdi'
 		).then((result) => {
 			setShowJumlahDatabyProdi(result.data[0].JUMLAH);
 			console.log(result.data[0].JUMLAH);
@@ -19,7 +20,7 @@ export default function StatisticBar() {
 
 	const getJumlahDatabyResearchCenter = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/barstatistik.php?function=showJumlahResearchCenter'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahResearchCenter'
 		).then((result) => {
 			setShowJumlahDatabyResearchCenter(result.data[0].JUMLAH);
 			// console.log(result);
@@ -29,9 +30,19 @@ export default function StatisticBar() {
 
 	const getJumlahDatabyResearchGroup = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/barstatistik.php?function=showJumlahResearchGroup'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahResearchGroup'
 		).then((result) => {
 			setShowJumlahDatabyResearchGroup(result.data[0].JUMLAH);
+			console.log(result.JUMLAH);
+			setLoading(false);
+		});
+	};
+
+	const getJumlahDatabyMandiri = () => {
+		axios(
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahMandiri'
+		).then((result) => {
+			setShowJumlahDatabyMandiri(result.data[0].JUMLAH);
 			console.log(result.JUMLAH);
 			setLoading(false);
 		});
@@ -41,6 +52,7 @@ export default function StatisticBar() {
 		getJumlahDatabyProdi();
 		getJumlahDatabyResearchCenter();
 		getJumlahDatabyResearchGroup();
+		getJumlahDatabyMandiri();
 	}, []);
 
 	const series = [
@@ -55,6 +67,10 @@ export default function StatisticBar() {
 		{
 			name: 'Research Group',
 			data: [0, 0, showJumlahDatabyResearchGroup],
+		},
+		{
+			name: 'Mandiri',
+			data: [0, 0, 0, showJumlahDatabyMandiri],
 		},
 	];
 
@@ -90,7 +106,7 @@ export default function StatisticBar() {
 		},
 		xaxis: {
 			type: 'kategori',
-			categories: ['Program Studi', 'Research Center', 'Research Group'],
+			categories: ['Program Studi', 'Research Center', 'Research Group', 'Mandiri'],
 		},
 		legend: {
 			position: 'right',
@@ -102,7 +118,7 @@ export default function StatisticBar() {
 	};
 
 	if (loading) {
-		return <div>Hai</div>;
+		return <div>Loading...</div>;
 	}
 
 	return (

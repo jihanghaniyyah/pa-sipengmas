@@ -12,7 +12,7 @@ export default function ResearchGroupAdmin() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmasbyRG',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyRG',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -36,7 +36,7 @@ export default function ResearchGroupAdmin() {
 				axios({
 					method: 'post',
 					url:
-						'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=deleteDataPengmas',
+						'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=deleteDataPengmas',
 					data: { ID_PENGMAS: id },
 					headers: {
 						'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -101,7 +101,7 @@ export default function ResearchGroupAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -138,7 +138,7 @@ export default function ResearchGroupAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/admin/tambahdataresearchgroup'
+									to='/mis116/admin/tambahdataresearchgroup'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

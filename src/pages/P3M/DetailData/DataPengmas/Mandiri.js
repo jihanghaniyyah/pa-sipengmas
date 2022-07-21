@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Header, SideBar } from '../../components';
 import axios from 'axios';
 
-export default function DetailDataPengmasAdmin() {
+export default function DetailPengmasMandiriAdmin() {
 	let nomor = window.location.pathname.split('/');
 	console.log(nomor[3]);
 	// const { id } = useParams();
@@ -16,7 +16,7 @@ export default function DetailDataPengmasAdmin() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyID',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyMandiri',
 			data: { ID_detailDataPengmas: parseInt(nomor[4]) },
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -68,9 +68,9 @@ export default function DetailDataPengmasAdmin() {
 									</div>
 								</div>
 								<div class='row'>
-									<div class='col-4 col-md-2'>Pusat Riset</div>
+									<div class='col-4 col-md-2'>Peran</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.NAMA}
+										: {showDetailDataPengmas.PERAN}
 									</div>
 								</div>
 								<div class='row'>
@@ -80,35 +80,17 @@ export default function DetailDataPengmasAdmin() {
 									</div>
 								</div>
 								<div class='row'>
-									<div class='col-4 col-md-2'>Latar Belakang</div>
+									<div class='col-4 col-md-2'>Rangkuman Kegiatan</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.LATAR_BELAKANG}
+										: {showDetailDataPengmas.KETERANGAN}
 									</div>
 								</div>
-								<div class='row'>
-									<div class='col-4 col-md-2'>Tujuan</div>
+								{/* <div class='row'>
+									<div class='col-4 col-md-2'>Dokumentasi</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.TUJUAN}
+										: {showDetailDataPengmas.DOKUMENTASI}
 									</div>
-								</div>
-								<div class='row'>
-									<div class='col-4 col-md-2'>Hasil</div>
-									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.HASIL}
-									</div>
-								</div>
-								<div class='row'>
-									<div class='col-4 col-md-2'>Kendala</div>
-									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.KENDALA}
-									</div>
-								</div>
-								<div class='row mb-3'>
-									<div class='col-4 col-md-2'>Kesimpulan dan Saran</div>
-									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.KESIMPULAN_SARAN}
-									</div>
-								</div>
+								</div> */}
 								{/* <div class='row'>
 									<div class='col-4 col-md-2'></div>
 									<div class='col-8 col-md-10 buttons'>

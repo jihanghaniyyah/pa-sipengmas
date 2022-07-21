@@ -4,23 +4,19 @@ import { Header, SideBar } from '../../components';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default function TambahPengmasResearchGroup() {
+export default function TambahPengmasMandiriAdmin() {
 	const [showKategori, setShowKategori] = React.useState([]);
 	const [showPegawai, setShowPegawai] = React.useState([]);
-	const [showPusatRiset, setShowPusatRiset] = React.useState([]);
 	const [valueKategori, setValueKategori] = React.useState([]);
 	const [valuePegawai, setValuePegawai] = React.useState([]);
-	const [valuePusatRiset, setValuePusatRiset] = React.useState([]);
 	const history = useHistory();
 
 	const [formInput, setFormInput] = React.useState({
 		judul: '',
 		tahun: '',
-		latarbelakang: '',
-		tujuan: '',
-		hasil: '',
-		kendala: '',
-		kesimpulansaran: '',
+		peran: '',
+		keterangan: '',
+		dokumentasi: '',
 	});
 
 	const onChangeInput = (e) => {
@@ -72,46 +68,22 @@ export default function TambahPengmasResearchGroup() {
 		getKategori();
 	}, []);
 
-	const onChangePusatRiset = (e) => {
-		setValuePusatRiset(e.target.value);
-	};
-
-	const getPusatRiset = () => {
-		axios({
-			method: 'post',
-			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/pusatriset.php?function=showPusatRiset',
-			headers: {
-				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-			},
-		}).then((result) => {
-			setShowPusatRiset(result.data);
-		});
-	};
-
-	React.useEffect(() => {
-		getPusatRiset();
-	}, []);
-
 	const submitForm = (e) => {
 		e.preventDefault();
 
 		const saveData = {
 			JUDUL: formInput.judul,
 			ID_KATEGORI: valueKategori,
-			PUSAT_RISET_ID: valuePusatRiset,
 			PEGAWAI_ID: valuePegawai,
-			LATAR_BELAKANG: formInput.latarbelakang,
-			TUJUAN: formInput.tujuan,
 			TAHUN_PELAKSANAAN: formInput.tahunpelaksanaan,
-			HASIL: formInput.hasil,
-			KESIMPULAN_SARAN: formInput.kesimpulansaran,
-			KENDALA: formInput.kendala,
+			PERAN: formInput.peran,
+			KETERANGAN: formInput.keterangan,
+			DOKUMENTASI: formInput.dokumentasi,
 		};
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=insertDataPengmas',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=insertDataMandiri',
 			data: saveData,
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -125,9 +97,10 @@ export default function TambahPengmasResearchGroup() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/researchgroup');
+						history.push('/mis116/admin/mandiri');
 					}
 				});
+				console.log(result.data.data);
 			})
 			.catch((err) => console.error(err));
 	};
@@ -138,7 +111,7 @@ export default function TambahPengmasResearchGroup() {
 			<div class='main-content'>
 				<section class='section'>
 					<div class='section-header'>
-						<h1>Tambah Data Research Group</h1>
+						<h1>Tambah Data Pengmas Mandiri</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>Data Pengmas</div>
 							<div class='breadcrumb-item'>Tambah Data</div>
@@ -204,19 +177,17 @@ export default function TambahPengmasResearchGroup() {
 									</div>
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Pusat Riset
+											Peran
 										</label>
 										<div class='col-sm-12 col-md-7'>
 											<select
-												class='form-control selectric'
-												onChange={onChangePusatRiset}
+												class='form-control'
+												name='peran'
+												onChange={onChangeInput}
 											>
-												<option value=''>Pilih Pusat Riset</option>
-												{showPusatRiset.map((item) => {
-													return (
-														<option value={item.ID}>{item.NAMA}</option>
-													);
-												})}
+												<option value=''>Pilih Peran</option>
+												<option value='Narasumber'>Narasumber</option>
+												<option value='Reviewer'>Reviewer</option>
 											</select>
 										</div>
 									</div>
@@ -235,65 +206,15 @@ export default function TambahPengmasResearchGroup() {
 									</div>
 									<div class='form-group row mb-4'>
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Latar Belakang
+											Rangkuman Kegiatan
 										</label>
 										<div class='col-sm-12 col-md-7'>
 											<input
 												type='text'
 												class='form-control'
-												name='latarbelakang'
+												name='keterangan'
 												onChange={onChangeInput}
 											/>
-										</div>
-									</div>
-									<div class='form-group row mb-4'>
-										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Tujuan
-										</label>
-										<div class='col-sm-12 col-md-7'>
-											<input
-												type='text'
-												class='form-control'
-												name='tujuan'
-												onChange={onChangeInput}
-											/>
-										</div>
-									</div>
-									<div class='form-group row mb-4'>
-										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Hasil
-										</label>
-										<div class='col-sm-12 col-md-7'>
-											<input
-												type='text'
-												class='form-control'
-												name='hasil'
-												onChange={onChangeInput}
-											/>
-										</div>
-									</div>
-									<div class='form-group row mb-4'>
-										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Kendala
-										</label>
-										<div class='col-sm-12 col-md-7'>
-											<input
-												type='text'
-												class='form-control'
-												name='kendala'
-												onChange={onChangeInput}
-											/>
-										</div>
-									</div>
-									<div class='form-group row mb-4'>
-										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-											Kesimpulan dan Saran
-										</label>
-										<div class='col-sm-12 col-md-7'>
-											<textarea
-												name='kesimpulansaran'
-												onChange={onChangeInput}
-											></textarea>
 										</div>
 									</div>
 									<div class='form-group row mb-4'>

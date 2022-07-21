@@ -6,6 +6,16 @@ import { Header, SideBar } from '../components';
 import axios from 'axios';
 
 export default function DashboardP3M() {
+	let role;
+	if (sessionStorage.key('role') !== null) {
+		if (sessionStorage.getItem('role') === '4') {
+			sessionStorage.removeItem('role');
+			window.location.pathname = '/login';
+		}
+	} else {
+		window.location.pathname = '/login';
+	}
+
 	const [showTotalData, setShowTotalData] = useState([]);
 	const [showTotalProdi, setShowTotalProdi] = useState([]);
 	const [showTotalResearchCenter, setShowTotalResearchCenter] = useState([]);
@@ -13,7 +23,7 @@ export default function DashboardP3M() {
 
 	const getTotalDataPengmas = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/totaldata.php?function=showTotalDataPengmas'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataPengmas'
 		).then((result) => {
 			setShowTotalData(result.data[0].JUMLAH);
 			console.log(result.data[0].JUMLAH);
@@ -26,7 +36,7 @@ export default function DashboardP3M() {
 
 	const getTotalProdi = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/totaldata.php?function=showTotalDataProdi'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataProdi'
 		).then((result) => {
 			setShowTotalProdi(result.data[0].JUMLAH);
 			console.log(result.data[0].JUMLAH);
@@ -39,7 +49,7 @@ export default function DashboardP3M() {
 
 	const getTotalResearchCenter = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/totaldata.php?function=showTotalDataRC'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataRC'
 		).then((result) => {
 			setShowTotalResearchCenter(result.data[0].JUMLAH);
 			console.log(result.data[0].JUMLAH);
@@ -52,7 +62,7 @@ export default function DashboardP3M() {
 
 	const getTotalResearchGroup = () => {
 		axios(
-			'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/totaldata.php?function=showTotalDataRG'
+			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataRG'
 		).then((result) => {
 			setShowTotalResearchGroup(result.data[0].JUMLAH);
 			console.log(result.data[0].JUMLAH);
@@ -132,11 +142,11 @@ export default function DashboardP3M() {
 								<StatisticBar />
 							</div>
 						</div>
-						{/* <div className='col-lg-6 col-md-12 col-12 col-sm-12'>
+						<div className='col-lg-6 col-md-12 col-12 col-sm-12'>
 							<div className='card'>
 								<StatisticLine />
 							</div>
-						</div> */}
+						</div>
 					</div>
 					<div>
 						<AllPost />

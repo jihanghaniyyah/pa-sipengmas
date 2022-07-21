@@ -11,7 +11,7 @@ export default function PenawaranJudul() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudul',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=showJudul',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -81,7 +81,7 @@ export default function PenawaranJudul() {
 				aksi: (
 					<div>
 						<Link
-							to={`/penawaranjudul/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							to={`/mis116/dashboard/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>

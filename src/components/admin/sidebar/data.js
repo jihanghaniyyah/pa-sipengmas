@@ -12,7 +12,7 @@ export const Data = {
 			children: [
 				{
 					name: 'Statistik Data',
-					url: '/dashboard',
+					url: '/mis116/dashboard',
 					// active: true
 				},
 			],
@@ -28,15 +28,19 @@ export const Data = {
 			children: [
 				{
 					name: 'Program Studi',
-					url: '/data/prodi',
+					url: '/mis116/dashboard/prodi',
 				},
 				{
 					name: 'Research Center',
-					url: '/data/researchcenter',
+					url: '/mis116/dashboard/researchcenter',
 				},
 				{
 					name: 'Research Group',
-					url: '/data/researchgroup',
+					url: '/mis116/dashboard/researchgroup',
+				},
+				{
+					name: 'Mandiri',
+					url: '/mis116/dashboard/mandiri',
 				},
 			],
 		},
@@ -47,7 +51,7 @@ export const Data = {
 			children: [
 				{
 					name: 'Daftar Penawaran',
-					url: '/data/penawaranjudul',
+					url: '/mis116/dashboard/penawaranjudul',
 				},
 			],
 		},

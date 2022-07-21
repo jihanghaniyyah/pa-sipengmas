@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Logo from '../../../assets/img/logo/logosipengmas.png';
 import Cookies from 'universal-cookie';
+import axios from 'axios';
 
 export default function Login() {
 	let history = useHistory();
@@ -12,32 +13,74 @@ export default function Login() {
 	const [password, setPassword] = useState();
 	function login(e) {
 		e.preventDefault();
-		const bodyData = {
-			dataEmail: email,
-			dataPassword: password,
-		};
-		fetch(`https://project.mis.pens.ac.id/mis116/sipengmas/auth.php`, {
-			method: 'POST',
-			credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json',
+		// const bodyData = {
+		// 	dataEmail: email,
+		// 	dataPassword: password,
+		// };
+		// fetch(`https://project.mis.pens.ac.id/mis116/sipengmas/auth.php`, {
+		// 	method: 'POST',
+		// 	credentials: 'same-origin',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: { ...bodyData },
+		// 	cache: 'no-cache',
+		// 	mode: 'cors',
+		// 	redirect: 'follow',
+		// 	referrer: 'no-referrer',
+		// })
+		// 	// .then((response) => response.json())
+		// 	.then((response) => console.log(response))
+		// 	.then((data) => {
+		// 		if (data.status === 'Dosen') {
+		// 			cookies.set('username', data.data.Name);
+		// 			history.push('/dashboard');
+		// 		} else if (data.status === 'P3M') {
+		// 			cookies.set('username', data.data.Name);
+		// 			history.push('/admin/dashboard');
+		// 		}
+		// 	});
+		axios({
+			method: 'post',
+			url: 'https://project.mis.pens.ac.id/mis116/sipengmas/auth.php',
+			data: {
+				dataEmail: email,
+				dataPassword: password,
 			},
-			body: JSON.stringify(bodyData),
-			cache: 'no-cache',
-			mode: 'cors',
-			redirect: 'follow',
-			referrer: 'no-referrer',
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+			},
+		}).then((result) => {
+			// console.log(result);
+			// console.log(result);
+			cookies.set('username', result.data.Name);
+			getDetailPegawai(result.data.NIP);
+		});
+		// console.log(bodyData);
+	}
+
+	function getDetailPegawai(nip) {
+		axios({
+			method: 'post',
+			url: 'https://project.mis.pens.ac.id/mis116/sipengmas/getDetailPegawai.php',
+			data: {
+				NIP: nip,
+			},
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+			},
 		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.status === 'Dosen') {
-					cookies.set('username', data.data.Name);
-					history.push('/dashboard');
-				} else if (data.status === 'P3M') {
-					cookies.set('username', data.data.Name);
-					history.push('/admin/dashboard');
+			.then((result) => {
+				// console.log(result);
+				sessionStorage.setItem('role', result.data.data.STAFF);
+				if (result.data.data.STAFF === '4') {
+					window.location.pathname = '/mis116/dashboard';
+				} else if (result.data.data.STAFF === '32') {
+					window.location.pathname = '/mis116/admin/dashboard';
 				}
-			});
+			})
+			.catch((err) => console.log(err));
+		// console.log(bodyData);
 	}
 
 	return (
@@ -64,6 +107,7 @@ export default function Login() {
 										action='#'
 										noValidate
 										className='needs-validation'
+										onSubmit={login}
 									>
 										<div className='form-group'>
 											<label htmlFor='email'>NetID*</label>
@@ -102,7 +146,7 @@ export default function Login() {
 										</div>
 										<div className='form-group'>
 											<button
-												onClick={login}
+												// onClick={login}
 												type='submit'
 												className='btn btn-primary btn-lg btn-block'
 												tabIndex='4'

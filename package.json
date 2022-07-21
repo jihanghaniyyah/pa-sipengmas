@@ -1,6 +1,6 @@
 {
 	"name": "stisla",
-	"homepage": "https://project.mis.pens.ac.id/mis116/sipengmas/login",
+	"homepage": "https://project.mis.pens.ac.id/mis116/sipengmas",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

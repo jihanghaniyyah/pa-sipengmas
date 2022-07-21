@@ -8,6 +8,7 @@ export class UserDropdown extends Component {
 		const cookies = new Cookies();
 
 		const username = cookies.get('username');
+		console.log(username);
 		const { userDetail } = this.props;
 		return (
 			<li className='dropdown'>
@@ -19,7 +20,7 @@ export class UserDropdown extends Component {
 					<div className='d-sm-none d-lg-inline-block'>Hi, {username}</div>
 				</Link>
 				<div className='dropdown-menu dropdown-menu-right'>
-					<Link to='/login' className='dropdown-item has-icon text-danger'>
+					<Link to='/mis116/login' className='dropdown-item has-icon text-danger'>
 						<i className={userDetail.logoutIcon} /> {userDetail.logoutTitle}
 					</Link>
 				</div>

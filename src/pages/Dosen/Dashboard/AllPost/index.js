@@ -10,7 +10,7 @@ export default function AllPost() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=showDataPengmas',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmas',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -70,7 +70,10 @@ export default function AllPost() {
 				kategori: item.KATEGORI,
 				pusatriset: item.NAMA,
 				aksi: (
-					<Link to={`/data/detaildatapengmas/${item.ID_PENGMAS}`} class='btn btn-info'>
+					<Link
+						to={`/mis116/dashboard/detaildatapengmas/${item.ID_PENGMAS}`}
+						class='btn btn-info'
+					>
 						<i class='fas fa-eye'></i>
 					</Link>
 				),

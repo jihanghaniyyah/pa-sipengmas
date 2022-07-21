@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default function DetailDataPengmas() {
+export default function DetailDataMandiri() {
 	let nomor = window.location.pathname.split('/');
 	console.log(nomor[3]);
 	// const { id } = useParams();
@@ -11,17 +11,17 @@ export default function DetailDataPengmas() {
 	const [loading, setLoading] = useState(true);
 
 	const getDetailbyID = (id) => {
-		console.log('id', nomor[4]);
+		console.log(nomor[3]);
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyID',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyMandiri',
 			data: { ID_detailDataPengmas: parseInt(nomor[4]) },
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
-			console.log(result);
+			console.log(result.data.data);
 			setShowDetailDataPengmas(result.data.data[0]);
 			setLoading(false);
 		});
@@ -62,8 +62,8 @@ export default function DetailDataPengmas() {
 								</div>
 							</div>
 							<div class='row'>
-								<div class='col-4 col-md-2'>Pusat Riset</div>
-								<div class='col-8 col-md-10'>: {showDetailDataPengmas.NAMA}</div>
+								<div class='col-4 col-md-2'>Peran</div>
+								<div class='col-8 col-md-10'>: {showDetailDataPengmas.PERAN}</div>
 							</div>
 							<div class='row'>
 								<div class='col-4 col-md-2'>Tahun Pelaksanaan</div>
@@ -72,48 +72,36 @@ export default function DetailDataPengmas() {
 								</div>
 							</div>
 							<div class='row'>
-								<div class='col-4 col-md-2'>Latar Belakang</div>
+								<div class='col-4 col-md-2'>Rangkuman Kegiatan</div>
 								<div class='col-8 col-md-10'>
-									: {showDetailDataPengmas.LATAR_BELAKANG}
-								</div>
-							</div>
-							<div class='row'>
-								<div class='col-4 col-md-2'>Tujuan</div>
-								<div class='col-8 col-md-10'>: {showDetailDataPengmas.TUJUAN}</div>
-							</div>
-							<div class='row'>
-								<div class='col-4 col-md-2'>Hasil</div>
-								<div class='col-8 col-md-10'>: {showDetailDataPengmas.HASIL}</div>
-							</div>
-							<div class='row'>
-								<div class='col-4 col-md-2'>Kendala</div>
-								<div class='col-8 col-md-10'>: {showDetailDataPengmas.KENDALA}</div>
-							</div>
-							<div class='row mb-3'>
-								<div class='col-4 col-md-2'>Kesimpulan dan Saran</div>
-								<div class='col-8 col-md-10'>
-									: {showDetailDataPengmas.KESIMPULAN_SARAN}
+									: {showDetailDataPengmas.KETERANGAN}
 								</div>
 							</div>
 							{/* <div class='row'>
-								<div class='col-4 col-md-2'></div>
-								<div class='col-8 col-md-10 buttons'>
-									<Link to='/prodi/detaildataprodi' class='btn btn-warning'>
-										Unduh File
-									</Link>
-									<Link to='/prodi/detaildataprodi' class='btn btn-warning'>
-										Unduh SK
-									</Link>
-								</div>
-							</div>
-							<div class='row'>
-								<div class='col-4 col-md-2'></div>
-								<div class='col-8 col-md-10 buttons'>
-									<Link to='/data/prodi' class='btn btn-info'>
-										Kembali
-									</Link>
+								<div class='col-4 col-md-2'>Dokumentasi</div>
+								<div class='col-8 col-md-10'>
+									: {showDetailDataPengmas.DOKUMENTASI}
 								</div>
 							</div> */}
+							{/* <div class='row'>
+									<div class='col-4 col-md-2'></div>
+									<div class='col-8 col-md-10 buttons'>
+										<Link to='/admin/detaildataprodi' class='btn btn-warning'>
+											Unduh File
+										</Link>
+										<Link to='/admin/detaildataprodi' class='btn btn-warning'>
+											Unduh SK
+										</Link>
+									</div>
+								</div> */}
+							{/* <div class='row'>
+									<div class='col-4 col-md-2'></div>
+									<div class='col-8 col-md-10 buttons'>
+										<Link to='/admin/dataprodi' class='btn btn-info'>
+											Kembali
+										</Link>
+									</div>
+								</div> */}
 						</div>
 					</div>
 				</div>

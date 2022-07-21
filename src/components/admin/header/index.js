@@ -19,7 +19,6 @@ const Header = () => {
 							</a>
 						</li>
 					</ul>
-					{/* <Search searchResultData={searchResultData} /> */}
 				</form>
 				<ul className='navbar-nav navbar-right'>
 					<UserDropdown userDetail={userDetail} />

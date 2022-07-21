@@ -15,8 +15,8 @@ export default function DetailDataPenawaranJudulAdmin() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudulbyID',
-			data: { ID_detailPenawaran: nomor[3] },
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=showJudulbyID',
+			data: { ID_detailPenawaran: nomor[4] },
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -94,7 +94,10 @@ export default function DetailDataPenawaranJudulAdmin() {
 								<div class='row'>
 									<div class='col-4 col-md-2'></div>
 									<div class='col-8 col-md-10 buttons'>
-										<Link to='/admin/penawaranjudul' class='btn btn-success'>
+										<Link
+											to='/mis116/admin/penawaranjudul'
+											class='btn btn-success'
+										>
 											Kembali
 										</Link>
 									</div>

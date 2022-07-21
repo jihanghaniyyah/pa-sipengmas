@@ -12,7 +12,7 @@ export default function PenawaranJudulAdmin() {
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=showJudul',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=showJudul',
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
@@ -109,14 +109,17 @@ export default function PenawaranJudulAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/admin/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							to={`/mis116/admin/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
 						</Link>
-						{/* <Link to='/admin/detaildatapenawaranjudul' class='btn btn-warning'>
-							Edit
-						</Link> */}
+						<Link
+							to={`/mis116/admin-edit-penawaranjudul/${item.ID_PENAWARAN}`}
+							class='btn btn-warning'
+						>
+							<i class='fas fa-pen' />
+						</Link>
 						<button
 							onClick={() => deleteDataJudul(item.ID_PENAWARAN)}
 							class='btn btn-danger'
@@ -150,7 +153,7 @@ export default function PenawaranJudulAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/admin/tambahdata/penawaranjudul'
+									to='/mis116/admin/tambahdata/penawaranjudul'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

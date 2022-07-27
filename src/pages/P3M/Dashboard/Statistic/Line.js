@@ -14,7 +14,6 @@ export default function StatisticLine() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikline.php?function=showData2018'
 		).then((result) => {
 			setShowData2018(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -23,7 +22,6 @@ export default function StatisticLine() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikline.php?function=showData2019'
 		).then((result) => {
 			setShowData2019(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -32,7 +30,6 @@ export default function StatisticLine() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikline.php?function=showData2020'
 		).then((result) => {
 			setShowData2020(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -41,7 +38,6 @@ export default function StatisticLine() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikline.php?function=showData2021'
 		).then((result) => {
 			setShowData2021(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 	const getData2022 = () => {
@@ -49,7 +45,6 @@ export default function StatisticLine() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikline.php?function=showData2022'
 		).then((result) => {
 			setShowData2022(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 

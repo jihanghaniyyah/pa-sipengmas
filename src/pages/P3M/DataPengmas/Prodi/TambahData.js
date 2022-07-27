@@ -129,10 +129,11 @@ export default function TambahPengmasProdi() {
 			KESIMPULAN_SARAN: formInput.kesimpulansaran,
 			KENDALA: formInput.kendala,
 		};
+		console.log(saveData);
 		axios({
 			method: 'post',
 			url:
-				'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/datapengmas.php?function=insertDataPengmas',
+				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=insertDataPengmas',
 			data: saveData,
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',

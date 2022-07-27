@@ -77,7 +77,6 @@ export default function TambahPengmasMandiri() {
 			TAHUN_PELAKSANAAN: formInput.tahunpelaksanaan,
 			PERAN: formInput.peran,
 			KETERANGAN: formInput.keterangan,
-			DOKUMENTASI: formInput.dokumentasi,
 		};
 		axios({
 			method: 'post',

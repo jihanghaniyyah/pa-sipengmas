@@ -6,25 +6,23 @@ import axios from 'axios';
 export default function DetailDataPengmasAdmin() {
 	let nomor = window.location.pathname.split('/');
 	console.log(nomor[3]);
-	// const { id } = useParams();
 
 	const [showDetailDataPengmas, setShowDetailDataPengmas] = useState({});
 	const [loading, setLoading] = useState(true);
 
 	const getDetailbyID = (id) => {
-		console.log(nomor[3]);
 		axios({
 			method: 'post',
 			url:
 				'https://project.mis.pens.ac.id/mis116/sipengmas/api/datapengmas.php?function=showDataPengmasbyID',
-			data: { ID_detailDataPengmas: parseInt(nomor[4]) },
+			data: { ID_detailPenawaran: nomor[4] },
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
-			console.log(result.data.data);
-			setShowDetailDataPengmas(result.data.data[0]);
-			setLoading(false);
+			setShowDetailDataPengmas(result.data.data);
+			// setLoading(false);
+			console.log(result);
 		});
 	};
 
@@ -52,61 +50,61 @@ export default function DetailDataPengmasAdmin() {
 								<div class='row'>
 									<div class='col-4 col-md-2'>Judul</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.JUDUL}
+										: {loading ? '' : showDetailDataPengmas.JUDUL}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Nama Pegawai</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.NAMA_PEGAWAI}
+										: {loading ? '' : showDetailDataPengmas.NAMA_PEGAWAI}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Kategori</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.KATEGORI}
+										: {loading ? '' : showDetailDataPengmas.KATEGORI}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Pusat Riset</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.NAMA}
+										: {loading ? '' : showDetailDataPengmas.NAMA}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Tahun Pelaksanaan</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.TAHUN_PELAKSANAAN}
+										: {loading ? '' : showDetailDataPengmas.TAHUN_PELAKSANAAN}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Latar Belakang</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.LATAR_BELAKANG}
+										: {loading ? '' : showDetailDataPengmas.LATAR_BELAKANG}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Tujuan</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.TUJUAN}
+										: {loading ? '' : showDetailDataPengmas.TUJUAN}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Hasil</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.HASIL}
+										: {loading ? '' : showDetailDataPengmas.HASIL}
 									</div>
 								</div>
 								<div class='row'>
 									<div class='col-4 col-md-2'>Kendala</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.KENDALA}
+										: {loading ? '' : showDetailDataPengmas.KENDALA}
 									</div>
 								</div>
 								<div class='row mb-3'>
 									<div class='col-4 col-md-2'>Kesimpulan dan Saran</div>
 									<div class='col-8 col-md-10'>
-										: {showDetailDataPengmas.KESIMPULAN_SARAN}
+										: {loading ? '' : showDetailDataPengmas.KESIMPULAN_SARAN}
 									</div>
 								</div>
 								{/* <div class='row'>

@@ -16,8 +16,6 @@ export default function AllPost() {
 			},
 		}).then((result) => {
 			setShowDataPengmas(result.data.data);
-
-			console.log(result.data.data);
 		});
 	};
 

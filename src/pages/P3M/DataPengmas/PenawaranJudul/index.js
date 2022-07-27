@@ -36,7 +36,7 @@ export default function PenawaranJudulAdmin() {
 				axios({
 					method: 'post',
 					url:
-						'https://project.mis.pens.ac.id/mis116/sipengmas/p3m/penawaranjudul.php?function=deleteJudul',
+						'https://project.mis.pens.ac.id/mis116/sipengmas/api/penawaranjudul.php?function=deleteJudul',
 					data: { ID_PENAWARAN: id },
 					headers: {
 						'content-type': 'application/x-www-form-urlencoded;charset=utf-8',

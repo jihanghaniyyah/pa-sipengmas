@@ -194,6 +194,7 @@ export default function EditPenawaranJudulAdmin() {
 												value={kategori}
 											>
 												<option value=''>Pilih Kategori</option>
+												{/* <option value={kategori} selected></option> */}
 												{showKategori.map((item) => {
 													return (
 														<option value={item.ID_KATEGORI}>
@@ -248,7 +249,6 @@ export default function EditPenawaranJudulAdmin() {
 												name='narahubung'
 												onChange={(e) => {
 													setnarahubung(e.target.value);
-													console.log(narahubung);
 												}}
 												defaultValue={narahubung}
 											/>

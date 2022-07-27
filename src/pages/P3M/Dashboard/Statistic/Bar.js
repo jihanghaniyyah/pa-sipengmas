@@ -14,7 +14,6 @@ export default function StatisticBar() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahProdi'
 		).then((result) => {
 			setShowJumlahDatabyProdi(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -33,7 +32,6 @@ export default function StatisticBar() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahResearchGroup'
 		).then((result) => {
 			setShowJumlahDatabyResearchGroup(result.data[0].JUMLAH);
-			console.log(result.JUMLAH);
 			setLoading(false);
 		});
 	};
@@ -43,7 +41,6 @@ export default function StatisticBar() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahMandiri'
 		).then((result) => {
 			setShowJumlahDatabyMandiri(result.data[0].JUMLAH);
-			console.log(result.JUMLAH);
 			setLoading(false);
 		});
 	};

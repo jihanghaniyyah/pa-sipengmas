@@ -22,8 +22,6 @@ export default function PengmasProdiAdmin() {
 			},
 		}).then((result) => {
 			setShowDataPengmas(result.data.data);
-
-			console.log(result.data.data);
 		});
 	};
 
@@ -99,7 +97,7 @@ export default function PengmasProdiAdmin() {
 		getDataPengmas();
 	}, []);
 
-	const datatable = {
+	const datatableFilter = {
 		columns: [
 			{
 				label: 'No',
@@ -138,6 +136,71 @@ export default function PengmasProdiAdmin() {
 		],
 		rows: [
 			...showSelectedProdi.map((item, i) => ({
+				nomor: i + 1,
+				judul: item.JUDUL,
+				kategori: item.KATEGORI,
+				namapegawai: item.NAMA_PEGAWAI,
+				pusatriset: item.NAMA,
+				tahun: item.TAHUN_PELAKSANAAN,
+				aksi: (
+					<div>
+						<Link
+							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							class='btn btn-info'
+						>
+							<i class='fas fa-eye'></i>
+						</Link>
+						<button
+							onClick={() => deleteDataPengmas(item.ID_PENGMAS)}
+							class='btn btn-danger'
+						>
+							<i class='fas fa-trash'></i>
+						</button>
+					</div>
+				),
+			})),
+		],
+	};
+
+	const datatable = {
+		columns: [
+			{
+				label: 'No',
+				field: 'nomor',
+				width: 100,
+			},
+			{
+				label: 'Tahun Pelaksanaan',
+				field: 'tahun',
+				width: 100,
+			},
+			{
+				label: 'Judul',
+				field: 'judul',
+				width: 150,
+				attributes: {
+					'aria-controls': 'DataTable',
+					'aria-label': 'Name',
+				},
+			},
+			{
+				label: 'Program Studi',
+				field: 'pusatriset',
+				width: 270,
+			},
+			{
+				label: 'Nama Pegawai',
+				field: 'namapegawai',
+				width: 200,
+			},
+			{
+				label: 'Aksi',
+				field: 'aksi',
+				width: 150,
+			},
+		],
+		rows: [
+			...showDataPengmas.map((item, i) => ({
 				nomor: i + 1,
 				judul: item.JUDUL,
 				kategori: item.KATEGORI,
@@ -206,18 +269,42 @@ export default function PengmasProdiAdmin() {
 										</select>
 									</div>
 								</div>
-
-								<MDBDataTableV5
+								{valueProdi.length === 0 ? (
+									<MDBDataTableV5
+										hover
+										entriesOptions={[10, 20, 25, 50]}
+										entries={10}
+										pagesAmount={4}
+										data={datatable}
+										pagingTop
+										searchTop
+										searchBottom={false}
+										barReverse
+									/>
+								) : (
+									<MDBDataTableV5
+										hover
+										entriesOptions={[10, 20, 25, 50]}
+										entries={10}
+										pagesAmount={4}
+										data={datatableFilter}
+										pagingTop
+										searchTop
+										searchBottom={false}
+										barReverse
+									/>
+								)}
+								{/* <MDBDataTableV5
 									hover
 									entriesOptions={[10, 20, 25, 50]}
 									entries={10}
 									pagesAmount={4}
-									data={datatable}
+									data={valueProdi === [] ? datatable : datatableFilter}
 									pagingTop
 									searchTop
 									searchBottom={false}
 									barReverse
-								/>
+								/> */}
 							</div>
 						</div>
 					</div>

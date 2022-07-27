@@ -26,7 +26,6 @@ export default function DashboardP3M() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataPengmas'
 		).then((result) => {
 			setShowTotalData(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -39,7 +38,6 @@ export default function DashboardP3M() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataProdi'
 		).then((result) => {
 			setShowTotalProdi(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -52,7 +50,6 @@ export default function DashboardP3M() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataRC'
 		).then((result) => {
 			setShowTotalResearchCenter(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 
@@ -65,7 +62,6 @@ export default function DashboardP3M() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/totaldata.php?function=showTotalDataRG'
 		).then((result) => {
 			setShowTotalResearchGroup(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
 		});
 	};
 

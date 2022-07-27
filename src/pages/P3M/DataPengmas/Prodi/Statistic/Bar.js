@@ -109,7 +109,7 @@ export default function StatisticBarProdi() {
 			'https://project.mis.pens.ac.id/mis116/sipengmas/api/statistikbar.php?function=showJumlahS2TIK'
 		).then((result) => {
 			setShowJumlahDatabyS2TIK(result.data[0].JUMLAH);
-			console.log(result.data[0].JUMLAH);
+			// console.log(result.data[0].JUMLAH);
 		});
 	};
 	const getJumlahDatabyD3PJJTI = () => {
@@ -312,7 +312,7 @@ export default function StatisticBarProdi() {
 
 	// setLoading(false);
 
-	console.log(series);
+	// console.log(series);
 
 	const options = {
 		chart: {

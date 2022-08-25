@@ -90,28 +90,28 @@ export default function Dashboard() {
 			<SideBar />
 
 			<div className='row'>
-				{window.location.pathname === '/mis116/dashboard/prodi' ? (
+				{window.location.pathname === '/mis116/dashboard-prodi' ? (
 					<PengmasProdi />
-				) : window.location.pathname === '/mis116/dashboard/researchcenter' ? (
+				) : window.location.pathname === '/mis116/dashboard-researchcenter' ? (
 					<ResearchCenter />
-				) : window.location.pathname === '/mis116/dashboard/researchgroup' ? (
+				) : window.location.pathname === '/mis116/dashboard-researchgroup' ? (
 					<ResearchGroup />
-				) : window.location.pathname === '/mis116/dashboard/penawaranjudul' ? (
+				) : window.location.pathname === '/mis116/dashboard-penawaranjudul' ? (
 					<PenawaranJudul />
-				) : window.location.pathname === '/mis116/dashboard/mandiri' ? (
+				) : window.location.pathname === '/mis116/dashboard-mandiri' ? (
 					<Mandiri />
-				) : window.location.pathname === '/mis116/dashboard/tambahdatamandiri' ? (
+				) : window.location.pathname === '/mis116/dashboard-tambahdatamandiri' ? (
 					<TambahPengmasMandiri />
 				) : matchPath(window.location.pathname, {
-						path: '/mis116/dashboard/detaildatamandiri/:id',
+						path: '/mis116/dashboard-detaildatamandiri/:id',
 				  }) ? (
 					<DetailDataMandiri />
 				) : matchPath(window.location.pathname, {
-						path: '/mis116/dashboard/detaildatapengmas/:id',
+						path: '/mis116/dashboard-detaildatapengmas/:id',
 				  }) ? (
 					<DetailDataPengmas />
 				) : matchPath(window.location.pathname, {
-						path: '/mis116/dashboard/detaildatapenawaranjudul/:id',
+						path: '/mis116/dashboard-detaildatapenawaranjudul/:id',
 				  }) ? (
 					<DetailDataPenawaranJudul />
 				) : (

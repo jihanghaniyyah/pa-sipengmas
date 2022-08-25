@@ -95,7 +95,7 @@ export default function TambahPengmasMandiri() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/dashboard/mandiri');
+						history.push('/mis116/dashboard-mandiri');
 					}
 				});
 				console.log(result.data.data);
@@ -212,26 +212,6 @@ export default function TambahPengmasMandiri() {
 										/>
 									</div>
 								</div>
-								{/* <div class='form-group row mb-4'>
-									<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
-										Upload Dokumentasi
-									</label>
-									<div class='col-sm-12 col-md-7'>
-										<input
-											type='file'
-											class='form-control'
-											name='dokumentasi'
-											accept='image/png, image/jpeg'
-											onChange={(e) => uploadFile(e)}
-											// onChange={(e) =>
-											// 	setFormInput({
-											// 		...formInput,
-											// 		dokumentasi: e.target.files[0],
-											// 	})
-											// }
-										/>
-									</div>
-								</div> */}
 								<div class='form-group row mb-4'>
 									<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'></label>
 									<div class='col-sm-12 col-md-7'>

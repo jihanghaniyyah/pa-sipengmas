@@ -101,7 +101,7 @@ export default function ResearchGroupAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/admin-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -128,7 +128,7 @@ export default function ResearchGroupAdmin() {
 						<h1>Data Pengmas Berdasarkan Research Group</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/detaildatapengmas'>Data Pengmas</Link>
+								<Link to='/mis116/admin-researchgroup'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>Research Group</div>
 						</div>
@@ -138,7 +138,7 @@ export default function ResearchGroupAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/mis116/admin/tambahdataresearchgroup'
+									to='/mis116/admin-tambahdataresearchgroup'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

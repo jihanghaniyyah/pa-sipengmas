@@ -109,7 +109,7 @@ export default function PenawaranJudulAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							to={`/mis116/admin-detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -143,7 +143,7 @@ export default function PenawaranJudulAdmin() {
 						<h1>Penawaran Judul Pengabdian Masyarakat</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link href='/admin/penawaranjudul'>Data Pengmas</Link>
+								<Link href='/mis116/admin-penawaranjudul'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>Penawaran Judul</div>
 						</div>
@@ -153,7 +153,7 @@ export default function PenawaranJudulAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/mis116/admin/tambahdata/penawaranjudul'
+									to='/mis116/admin-tambahdata-penawaranjudul'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

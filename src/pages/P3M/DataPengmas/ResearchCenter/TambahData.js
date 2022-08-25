@@ -125,7 +125,7 @@ export default function TambahPengmasResearchCenter() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/researchcenter');
+						history.push('/mis116/admin-researchcenter');
 					}
 				});
 			})

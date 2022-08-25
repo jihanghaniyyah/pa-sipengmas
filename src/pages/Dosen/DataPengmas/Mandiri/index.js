@@ -99,7 +99,7 @@ export default function Mandiri() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/dashboard/detaildatamandiri/${item.ID_PENGMAS}`}
+							to={`/mis116/dashboard-detaildatamandiri/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -123,7 +123,7 @@ export default function Mandiri() {
 					<h1>Daftar Pengmas Mandiri</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='mis116/admin/dataprodi'>Data Pengmas</Link>
+							<Link to='/mis116/dashboard-mandiri'>Data Pengmas</Link>
 						</div>
 						<div class='breadcrumb-item'>Mandiri</div>
 					</div>
@@ -133,7 +133,7 @@ export default function Mandiri() {
 					<div class='card px-5'>
 						<div class='card-body'>
 							<Link
-								to='/mis116/dashboard/tambahdatamandiri'
+								to='/mis116/dashboard-tambahdatamandiri'
 								class='btn btn-warning mb-3'
 							>
 								Tambah Data

@@ -81,7 +81,7 @@ export default function PenawaranJudul() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/dashboard/detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
+							to={`/mis116/dashboard-detaildatapenawaranjudul/${item.ID_PENAWARAN}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -99,7 +99,7 @@ export default function PenawaranJudul() {
 					<h1>Daftar Penawaran Judul Pengmas</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='/data/penawaranjudul'>Data Pengmas</Link>
+							<Link to='/mis116/dashboard-penawaranjudul'>Data Pengmas</Link>
 						</div>
 						<div class='breadcrumb-item'>Penawaran Judul</div>
 					</div>

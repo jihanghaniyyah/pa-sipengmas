@@ -2,8 +2,6 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Header, SideBar } from '../../components';
 import axios from 'axios';
-// import AutoComplete from '@mui/material';
-// import Stack from '@mui/material/Stack';
 import Swal from 'sweetalert2';
 
 export default function TambahPenawaranJudulAdmin() {
@@ -29,15 +27,6 @@ export default function TambahPenawaranJudulAdmin() {
 	const onChangeKategori = (e) => {
 		setValueKategori(e.target.value);
 	};
-
-	// const onChangeKategori = (e) => {
-	// 	console.log(e.target.value);
-	// 	setShowKategori(e.target.value);
-	// };
-
-	// const onChangeKategori = (e) => {
-	// 	setShowKategori(e.target.value);
-	// };
 
 	const onChangeStatus = (e) => {
 		setValueStatus(e.target.value);
@@ -109,7 +98,7 @@ export default function TambahPenawaranJudulAdmin() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/penawaranjudul');
+						history.push('/mis116/admin-penawaranjudul');
 					}
 				});
 			})
@@ -126,10 +115,10 @@ export default function TambahPenawaranJudulAdmin() {
 						<h1>Tambah Data Penawaran Judul</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/penawaranjudul'>Data Pengmas</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>
-								<Link to='/admin/penawaranjudul'>Penawaran Judul</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Penawaran Judul</Link>
 							</div>
 							<div class='breadcrumb-item'>Tambah Data</div>
 						</div>

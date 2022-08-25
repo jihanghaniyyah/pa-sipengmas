@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 import '../../../js/js/scripts';
 import '../../../js/js/stisla';
 import './index.css';
-// import SidebarGlobal from "../../../js/SidebarGlobal";
 export class SideBar extends Component {
 	componentDidMount() {}
 	render() {
@@ -16,14 +15,14 @@ export class SideBar extends Component {
 					<div className='sidebar-brand'>
 						<Link
 							className='sidebar-title d-flex flex-nowrap justify-content-center'
-							to='/dashboard'
+							to='/mis116/dashboard'
 						>
 							<div className='sidebar-title-si'>SI</div>
 							<div className='sidebar-title-pengmas'>PENGMAS</div>
 						</Link>
 					</div>
 					<div className='sidebar-brand sidebar-brand-sm'>
-						<Link to='/dashboard'> SP </Link>
+						<Link to='/mis116/dashboard'> SP </Link>
 					</div>
 					<ul className='sidebar-menu mb-5'>
 						{Data.menus.map((menu, iMenu) => {
@@ -38,7 +37,10 @@ export class SideBar extends Component {
 								if (menu.active) {
 									comp = (
 										<li key={iMenu} className='nav-item dropdown active'>
-											<a href='/dashboard' className='nav-link has-dropdown'>
+											<a
+												href='/mis116/dashboard'
+												className='nav-link has-dropdown'
+											>
 												<i className={menu.icon} />
 												<span> {menu.name} </span>
 											</a>

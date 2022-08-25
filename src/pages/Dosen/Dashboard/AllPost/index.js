@@ -71,7 +71,7 @@ export default function AllPost() {
 				pusatriset: item.NAMA,
 				aksi: (
 					<Link
-						to={`/mis116/dashboard/detaildatapengmas/${item.ID_PENGMAS}`}
+						to={`/mis116/dashboard-detaildatapengmas/${item.ID_PENGMAS}`}
 						class='btn btn-info'
 					>
 						<i class='fas fa-eye'></i>

@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Header, SideBar } from '../../components';
 import axios from 'axios';
-// import AutoComplete from '@mui/material';
-// import Stack from '@mui/material/Stack';
 import Swal from 'sweetalert2';
 
 export default function EditPenawaranJudulAdmin() {
@@ -136,7 +134,7 @@ export default function EditPenawaranJudulAdmin() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/penawaranjudul');
+						history.push('/mis116/admin-penawaranjudul');
 					}
 				});
 			})
@@ -153,10 +151,10 @@ export default function EditPenawaranJudulAdmin() {
 						<h1>Edit Data Penawaran Judul</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/penawaranjudul'>Data Pengmas</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>
-								<Link to='/admin/penawaranjudul'>Penawaran Judul</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Penawaran Judul</Link>
 							</div>
 							<div class='breadcrumb-item'>Edit Data</div>
 						</div>

@@ -125,7 +125,7 @@ export default function TambahPengmasResearchGroup() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/researchgroup');
+						history.push('/mis116/admin-researchgroup');
 					}
 				});
 			})

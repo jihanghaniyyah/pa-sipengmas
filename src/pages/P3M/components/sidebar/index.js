@@ -17,14 +17,14 @@ export class SideBar extends Component {
 					<div className='sidebar-brand'>
 						<Link
 							className='sidebar-title d-flex flex-nowrap justify-content-center'
-							to='/mis116/admin/dashboard'
+							to='/mis116/admin-dashboard'
 						>
 							<div className='sidebar-title-si'>SI</div>
 							<div className='sidebar-title-pengmas'>PENGMAS</div>
 						</Link>
 					</div>
 					<div className='sidebar-brand sidebar-brand-sm'>
-						<Link to='/mis116/admin/dashboard'> SP </Link>
+						<Link to='/mis116/admin-dashboard'> SP </Link>
 					</div>
 					<ul className='sidebar-menu mb-5'>
 						{Data.menus.map((menu, iMenu) => {
@@ -40,7 +40,7 @@ export class SideBar extends Component {
 									comp = (
 										<li key={iMenu} className='nav-item dropdown active'>
 											<Link
-												to='/mis116/admin/dashboard'
+												to='/mis116/admin-dashboard'
 												className='nav-link has-dropdown'
 											>
 												<i className={menu.icon} />
@@ -127,7 +127,7 @@ export class SideBar extends Component {
 									comp = (
 										<li key={iMenu} className='nav-item dropdown active'>
 											<Link
-												to='/mis116/admin/dataprodi'
+												to='/mis116/admin-dataprodi'
 												className='nav-link has-dropdown'
 											>
 												<i className={menu.icon} />

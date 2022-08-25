@@ -145,7 +145,7 @@ export default function PengmasProdiAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/admin-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -210,7 +210,7 @@ export default function PengmasProdiAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/admin-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -237,7 +237,7 @@ export default function PengmasProdiAdmin() {
 						<h1>Daftar Pengmas Program Studi</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/dataprodi'>Data Pengmas</Link>
+								<Link to='/mis116/admin-dataprodi'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>Program Studi</div>
 						</div>
@@ -247,7 +247,7 @@ export default function PengmasProdiAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/mis116/admin/tambahdataprodi'
+									to='/mis116/admin-tambahdataprodi'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data
@@ -294,17 +294,6 @@ export default function PengmasProdiAdmin() {
 										barReverse
 									/>
 								)}
-								{/* <MDBDataTableV5
-									hover
-									entriesOptions={[10, 20, 25, 50]}
-									entries={10}
-									pagesAmount={4}
-									data={valueProdi === [] ? datatable : datatableFilter}
-									pagingTop
-									searchTop
-									searchBottom={false}
-									barReverse
-								/> */}
 							</div>
 						</div>
 					</div>

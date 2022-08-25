@@ -41,48 +41,75 @@ function App() {
 					<Switch history={history}>
 						{/* Dosen */}
 						<Redirect exact from='/' to='/mis116/login' />
-						<Route path='/mis116/dashboard' component={Dashboard}></Route>
 						<Route path='/mis116/login' component={Login} />
+						<Route path='/mis116/dashboard' component={Dashboard}></Route>
+						<Route path='/mis116/dashboard-prodi' component={Dashboard}></Route>
+						<Route
+							path='/mis116/dashboard-researchcenter'
+							component={Dashboard}
+						></Route>
+						<Route path='/mis116/dashboard-researchgroup' component={Dashboard}></Route>
+						<Route
+							path='/mis116/dashboard-penawaranjudul'
+							component={Dashboard}
+						></Route>
+						<Route path='/mis116/dashboard-mandiri' component={Dashboard}></Route>
+						<Route
+							path='/mis116/dashboard-tambahdatamandiri'
+							component={Dashboard}
+						></Route>
+						<Route
+							path='/mis116/dashboard-detaildatamandiri/:id'
+							component={Dashboard}
+						></Route>
+						<Route
+							path='/mis116/dashboard-detaildatapengmas/:id'
+							component={Dashboard}
+						></Route>
+						<Route
+							path='/mis116/dashboard-detaildatapenawaranjudul/:id'
+							component={Dashboard}
+						></Route>
 
 						{/* P3M */}
-						<Route path='/mis116/admin/dashboard' component={DashboardP3M} />
-						<Route path='/mis116/admin/dataprodi' component={PengmasProdiAdmin} />
+						<Route path='/mis116/admin-dashboard' component={DashboardP3M} />
+						<Route path='/mis116/admin-dataprodi' component={PengmasProdiAdmin} />
 						<Route
-							path='/mis116/admin/researchcenter'
+							path='/mis116/admin-researchcenter'
 							component={ResearchCenterAdmin}
 						/>
-						<Route path='/mis116/admin/researchgroup' component={ResearchGroupAdmin} />
-						<Route path='/mis116/admin/mandiri' component={DataMandiriAdmin} />
+						<Route path='/mis116/admin-researchgroup' component={ResearchGroupAdmin} />
+						<Route path='/mis116/admin-mandiri' component={DataMandiriAdmin} />
 						<Route
-							path='/mis116/admin/penawaranjudul'
+							path='/mis116/admin-penawaranjudul'
 							component={PenawaranJudulAdmin}
 						/>
 						<Route
-							path='/mis116/admin/detaildatapengmas/:id'
+							path='/mis116/admin-detaildatapengmas/:id'
 							component={DetailDataPengmasAdmin}
 						/>
 						<Route
-							path='/mis116/admin/detaildatapenawaranjudul/:id'
+							path='/mis116/admin-detaildatapenawaranjudul/:id'
 							component={DetailDataPenawaranJudulAdmin}
 						/>
 						<Route
-							path='/mis116/admin/detaildata/:id'
+							path='/mis116/admin-detaildata/:id'
 							component={DetailPengmasMandiriAdmin}
 						/>
 						<Route
-							path='/mis116/admin/tambahdataprodi'
+							path='/mis116/admin-tambahdataprodi'
 							component={TambahPengmasProdi}
 						/>
 						<Route
-							path='/mis116/admin/tambahdataresearchcenter'
+							path='/mis116/admin-tambahdataresearchcenter'
 							component={TambahPengmasResearchCenter}
 						/>
 						<Route
-							path='/mis116/admin/tambahdataresearchgroup'
+							path='/mis116/admin-tambahdataresearchgroup'
 							component={TambahPengmasResearchGroup}
 						/>
 						<Route
-							path='/mis116/admin/tambahdata/penawaranjudul'
+							path='/mis116/admin-tambahdata-penawaranjudul'
 							component={TambahPenawaranJudulAdmin}
 						/>
 						<Route
@@ -90,18 +117,12 @@ function App() {
 							component={EditPenawaranJudulAdmin}
 						/>
 						<Route
-							path='/mis116/admin/tambahdatamandiri'
+							path='/mis116/admin-tambahdatamandiri'
 							component={TambahPengmasMandiriAdmin}
 						/>
 					</Switch>
 				</React.Suspense>
 				<Footer />
-
-				<React.Suspense>
-					<Switch>
-						<Route></Route>
-					</Switch>
-				</React.Suspense>
 			</>
 		</div>
 	);

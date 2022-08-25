@@ -11,7 +11,6 @@ export default function DetailDataPengmas() {
 	const [loading, setLoading] = useState(true);
 
 	const getDetailbyID = (id) => {
-		console.log('id', nomor[4]);
 		axios({
 			method: 'post',
 			url:
@@ -21,7 +20,6 @@ export default function DetailDataPengmas() {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
-			console.log(result);
 			setShowDetailDataPengmas(result.data.data[0]);
 			setLoading(false);
 		});
@@ -95,25 +93,6 @@ export default function DetailDataPengmas() {
 									: {showDetailDataPengmas.KESIMPULAN_SARAN}
 								</div>
 							</div>
-							{/* <div class='row'>
-								<div class='col-4 col-md-2'></div>
-								<div class='col-8 col-md-10 buttons'>
-									<Link to='/prodi/detaildataprodi' class='btn btn-warning'>
-										Unduh File
-									</Link>
-									<Link to='/prodi/detaildataprodi' class='btn btn-warning'>
-										Unduh SK
-									</Link>
-								</div>
-							</div>
-							<div class='row'>
-								<div class='col-4 col-md-2'></div>
-								<div class='col-8 col-md-10 buttons'>
-									<Link to='/data/prodi' class='btn btn-info'>
-										Kembali
-									</Link>
-								</div>
-							</div> */}
 						</div>
 					</div>
 				</div>

@@ -11,7 +11,6 @@ export default function DetailDataMandiri() {
 	const [loading, setLoading] = useState(true);
 
 	const getDetailbyID = (id) => {
-		console.log(nomor[3]);
 		axios({
 			method: 'post',
 			url:
@@ -21,7 +20,6 @@ export default function DetailDataMandiri() {
 				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 			},
 		}).then((result) => {
-			console.log(result.data.data);
 			setShowDetailDataPengmas(result.data.data[0]);
 			setLoading(false);
 		});
@@ -77,31 +75,6 @@ export default function DetailDataMandiri() {
 									: {showDetailDataPengmas.KETERANGAN}
 								</div>
 							</div>
-							{/* <div class='row'>
-								<div class='col-4 col-md-2'>Dokumentasi</div>
-								<div class='col-8 col-md-10'>
-									: {showDetailDataPengmas.DOKUMENTASI}
-								</div>
-							</div> */}
-							{/* <div class='row'>
-									<div class='col-4 col-md-2'></div>
-									<div class='col-8 col-md-10 buttons'>
-										<Link to='/admin/detaildataprodi' class='btn btn-warning'>
-											Unduh File
-										</Link>
-										<Link to='/admin/detaildataprodi' class='btn btn-warning'>
-											Unduh SK
-										</Link>
-									</div>
-								</div> */}
-							{/* <div class='row'>
-									<div class='col-4 col-md-2'></div>
-									<div class='col-8 col-md-10 buttons'>
-										<Link to='/admin/dataprodi' class='btn btn-info'>
-											Kembali
-										</Link>
-									</div>
-								</div> */}
 						</div>
 					</div>
 				</div>

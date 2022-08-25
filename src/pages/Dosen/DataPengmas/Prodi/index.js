@@ -72,7 +72,7 @@ export default function PengmasProdi() {
 				tahun: item.TAHUN_PELAKSANAAN,
 				aksi: (
 					<Link
-						to={`/mis116/dashboard/detaildatapengmas/${item.ID_PENGMAS}`}
+						to={`/mis116/dashboard-detaildatapengmas/${item.ID_PENGMAS}`}
 						class='btn btn-info'
 					>
 						<i class='fas fa-eye'></i>
@@ -89,7 +89,7 @@ export default function PengmasProdi() {
 					<h1>Daftar Pengmas Program Studi</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='/data/prodi'>Data Pengmas</Link>
+							<Link to='/mis116/dashboard-prodi'>Data Pengmas</Link>
 						</div>
 						<div class='breadcrumb-item'>Program Studi</div>
 					</div>

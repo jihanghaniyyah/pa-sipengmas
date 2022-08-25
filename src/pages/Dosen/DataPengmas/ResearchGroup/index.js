@@ -73,7 +73,7 @@ export default function ResearchGroup() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/dashboard/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/dashboard-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -91,7 +91,7 @@ export default function ResearchGroup() {
 					<h1>Data Pengmas Berdasarkan Research Group</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='/data/researchgroup'>Data Pengmas</Link>
+							<Link to='/mis116/dashboard-researchgroup'>Data Pengmas</Link>
 						</div>
 						<div class='breadcrumb-item'>Research Group</div>
 					</div>

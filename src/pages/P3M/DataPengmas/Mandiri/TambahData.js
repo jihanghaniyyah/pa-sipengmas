@@ -97,7 +97,7 @@ export default function TambahPengmasMandiriAdmin() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/mandiri');
+						history.push('/mis116/admin-mandiri');
 					}
 				});
 				console.log(result.data.data);

@@ -73,7 +73,7 @@ export default function ResearchCenter() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/dashboard/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/dashboard-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -91,7 +91,7 @@ export default function ResearchCenter() {
 					<h1>Data Pengmas Berdasarkan Research Center</h1>
 					<div class='section-header-breadcrumb'>
 						<div class='breadcrumb-item active'>
-							<Link to='/data/researchcenter'>Data Pengmas</Link>
+							<Link to='/mis116/dashboard-researchcenter'>Data Pengmas</Link>
 						</div>
 						<div class='breadcrumb-item'>Research Center</div>
 					</div>

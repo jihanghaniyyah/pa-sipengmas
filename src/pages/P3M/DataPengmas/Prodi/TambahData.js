@@ -72,27 +72,6 @@ export default function TambahPengmasProdi() {
 		getKategori();
 	}, []);
 
-	// Pusat Riset
-	// const [showPusatRiset, setShowPusatRiset] = React.useState([]);
-	// React.useEffect(() => {
-	// 	fetch(
-	// 		`https://project.mis.pens.ac.id/mis116/sipengmas/p3m/pusatriset.php?function=showPusatRiset`,
-	// 		{
-	// 			credentials: 'same-origin',
-	// 			method: 'GET',
-	// 			cache: 'no-cache',
-	// 			mode: 'cors',
-	// 			redirect: 'follow',
-	// 			referrer: 'no-referrer',
-	// 		}
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log(data.data);
-	// 			setShowPusatRiset(data.data);
-	// 		});
-	// }, []);
-
 	const onChangePusatRiset = (e) => {
 		setValuePusatRiset(e.target.value);
 	};
@@ -147,7 +126,7 @@ export default function TambahPengmasProdi() {
 				}).then((result) => {
 					if (result.isConfirmed) {
 						// window.location.reload();
-						history.push('/mis116/admin/dataprodi');
+						history.push('/mis116/admin-dataprodi');
 					}
 				});
 			})
@@ -228,12 +207,6 @@ export default function TambahPengmasProdi() {
 										<label class='col-form-label text-md-right col-12 col-md-3 col-lg-3'>
 											Pusat Riset
 										</label>
-										{/* <AutoCompleteComponent
-											id='inputPusatRiset'
-											dataSource='showPusatRiset'
-											fields={{ value: 'NAMA' }}
-											onChange={(e) => setShowPusatRiset(e.target.value)}
-										/> */}
 										<div class='col-sm-12 col-md-7'>
 											<select
 												class='form-control selectric'

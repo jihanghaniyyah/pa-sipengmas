@@ -102,7 +102,7 @@ export default function ResearchCenterAdmin() {
 				aksi: (
 					<div>
 						<Link
-							to={`/mis116/admin/detaildatapengmas/${item.ID_PENGMAS}`}
+							to={`/mis116/admin-detaildatapengmas/${item.ID_PENGMAS}`}
 							class='btn btn-info'
 						>
 							<i class='fas fa-eye'></i>
@@ -128,7 +128,7 @@ export default function ResearchCenterAdmin() {
 						<h1>Data Pengmas Berdasarkan Research Center</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/researchcenter'>Data Pengmas</Link>
+								<Link to='/mis116/admin-researchcenter'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>Research Center</div>
 						</div>
@@ -138,7 +138,7 @@ export default function ResearchCenterAdmin() {
 						<div class='card px-5'>
 							<div class='card-body'>
 								<Link
-									to='/mis116/admin/tambahdataresearchcenter'
+									to='/mis116/admin-tambahdataresearchcenter'
 									class='btn btn-warning mb-3'
 								>
 									Tambah Data

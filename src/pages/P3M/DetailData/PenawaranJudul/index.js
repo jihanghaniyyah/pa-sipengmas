@@ -40,10 +40,10 @@ export default function DetailDataPenawaranJudulAdmin() {
 						<h1>Detail Data</h1>
 						<div class='section-header-breadcrumb'>
 							<div class='breadcrumb-item active'>
-								<Link to='/admin/penawaranjudul'>Data Pengmas</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Data Pengmas</Link>
 							</div>
 							<div class='breadcrumb-item'>
-								<Link to='/admin/penawaranjudul'>Penawaran Judul</Link>
+								<Link to='/mis116/admin-penawaranjudul'>Penawaran Judul</Link>
 							</div>
 							<div class='breadcrumb-item'>Detail Data</div>
 						</div>
@@ -95,7 +95,7 @@ export default function DetailDataPenawaranJudulAdmin() {
 									<div class='col-4 col-md-2'></div>
 									<div class='col-8 col-md-10 buttons'>
 										<Link
-											to='/mis116/admin/penawaranjudul'
+											to='/mis116/admin-penawaranjudul'
 											class='btn btn-success'
 										>
 											Kembali
